@@ -3,7 +3,6 @@ import sys
 import calculator_1
 
 if __name__ == "__main__":
-    
     if len(sys.argv) != 4:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
         sys.exit(1)
@@ -16,7 +15,7 @@ if __name__ == "__main__":
     ops = {
         "+": calculator_1.add,
         "-": calculator_1.sub,
-        "*": calculator_1.mul,
+        chr(42): calculator_1.mul,
         "/": calculator_1.div,
     }
 
