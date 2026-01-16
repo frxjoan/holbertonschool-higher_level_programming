@@ -2,7 +2,7 @@
 import hidden_4
 
 if __name__ == "__main__":
-    new_dict = sorted(hidden_4.__dict__.keys())
-    for words in new_dict:
-        if not words.startswith("__"):
-            print(words)
+    for name in sorted(hidden_4.__dict__):
+        if not name.startswith("__"):
+            print(name)
+
