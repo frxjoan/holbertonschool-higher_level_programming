@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import sys
-import calculator_1
+from calculator_1 import add, sub, mul, div
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
@@ -8,16 +8,10 @@ if __name__ == "__main__":
         sys.exit(1)
 
     a = int(sys.argv[1])
-    b = int(sys.argv[3])
     op = sys.argv[2]
-    result = 0
+    b = int(sys.argv[3])
 
-    ops = {
-        "+": calculator_1.add,
-        "-": calculator_1.sub,
-        chr(42): calculator_1.mul,
-        "/": calculator_1.div,
-    }
+    ops = {"+": add, "-": sub, "*": mul, "/": div}
 
     if op not in ops:
         print("Unknown operator. Available operators: +, -, * and /")
