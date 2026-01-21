@@ -14,7 +14,6 @@ def add_integer(a, b=98):
     a and b must be integers or floats.
     Floats are casted to integers before addition.
     """
-    result = 0
     if isinstance(a, bool) or not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
     if isinstance(b, bool) or not isinstance(b, (int, float)):
