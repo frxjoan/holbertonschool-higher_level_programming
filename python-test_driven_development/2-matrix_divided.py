@@ -1,22 +1,9 @@
 #!/usr/bin/python3
-"""
-2-matrix_divided
-Divides all elements of a matrix by a number.
-Returns a new matrix with results rounded to 2 decimals.
-"""
+"""Divides all elements of a matrix by a number and returns a new matrix."""
 
 
 def matrix_divided(matrix, div):
-    """
-    Divide each element of a matrix by div.
-
-    Args:
-        matrix (list of lists): matrix of ints/floats
-        div (int/float): divisor
-
-    Returns:
-        list of lists: new matrix with divided values rounded to 2 decimals
-    """
+    """Return a new matrix with each element divided by div (rounded to 2 decimals)."""
     err_matrix = "matrix must be a matrix (list of lists) of integers/floats"
 
     if type(div) not in (int, float):

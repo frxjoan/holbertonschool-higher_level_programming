@@ -44,6 +44,19 @@ TypeError: div must be a number
 Traceback (most recent call last):
 TypeError: div must be a number
 
+# matrix first, then div (ambiguous cases)
+>>> matrix_divided([], "2")
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix_divided([[]], "2")
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix_divided([[1, 2], [3, 4]], 0.0)
+Traceback (most recent call last):
+ZeroDivisionError: division by zero
+
 # matrix errors: not a list of lists
 >>> matrix_divided("not a matrix", 2)
 Traceback (most recent call last):
