@@ -5,6 +5,8 @@
     a and b must be integers or floats.
     Floats are casted to integers before addition.
 """
+
+
 def add_integer(a, b=98):
     result = 0
     if not isinstance(a, (int, float)):
