@@ -1,12 +1,15 @@
 #!/usr/bin/python3
-"""Prints a formatted sentence with a person's first and last name."""
+"""
+This module provides a function that prints a formatted sentence
+using a first name and a last name.
+"""
 
 
 def say_my_name(first_name, last_name=""):
     """
-    Prints a sentence with the first name and last name.
+    Prints My name is <first_name> <last_name>.
 
-    first_name and last_name must be strings.
+    Raises a TypeError if first_name or last_name is not a string.
     """
     if not isinstance(first_name, str):
         raise TypeError("first_name must be a string")
