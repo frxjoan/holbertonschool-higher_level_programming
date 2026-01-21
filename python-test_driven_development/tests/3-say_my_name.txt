@@ -24,3 +24,13 @@ TypeError: first_name must be a string
 >>> say_my_name("John", None)
 Traceback (most recent call last):
 TypeError: last_name must be a string
+
+# Reject bool as first_name
+>>> say_my_name(True, "Smith")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+# Reject bool as last_name
+>>> say_my_name("John", False)
+Traceback (most recent call last):
+TypeError: last_name must be a string
