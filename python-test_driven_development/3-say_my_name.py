@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 """
-This module provides a function that prints a formatted sentence
-using a first name and a last name.
+3-say_my_name module.
+
+This module defines say_my_name.
+It prints a name message.
+It validates argument types.
 """
 
 
