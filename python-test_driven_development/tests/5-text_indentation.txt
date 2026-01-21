@@ -2,12 +2,13 @@
 
 >>> text_indentation("Hello. World?")
 Hello.
-
+<BLANKLINE>
 World?
+<BLANKLINE>
 
 >>> text_indentation("Hello:   World")
 Hello:
-
+<BLANKLINE>
 World
 
 >>> text_indentation("No punctuation")
@@ -15,11 +16,11 @@ No punctuation
 
 >>> text_indentation("A.B?C:D")
 A.
-
+<BLANKLINE>
 B?
-
+<BLANKLINE>
 C:
-
+<BLANKLINE>
 D
 
 >>> text_indentation(123)
