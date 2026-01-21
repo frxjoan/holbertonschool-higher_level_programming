@@ -3,7 +3,7 @@
 
 
 def matrix_divided(matrix, div):
-    """Return a new matrix with each element divided by div (rounded to 2 decimals)."""
+    """Return a new matrix with each element divided by div."""
     err_matrix = "matrix must be a matrix (list of lists) of integers/floats"
 
     if type(div) not in (int, float):
