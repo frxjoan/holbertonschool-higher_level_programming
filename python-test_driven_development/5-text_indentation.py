@@ -19,9 +19,20 @@ def text_indentation(text):
     """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
+
+    text = text.rstrip(" ")
+
     i = 0
+    line_start = True
+
     while i < len(text):
+        if line_start and text[i] == " ":
+            i += 1
+            continue
+
         print(text[i], end="")
+        line_start = False
+
         if text[i] in ".?:":
             print()
             print()
