@@ -21,7 +21,7 @@ class Shape(ABC):
 class Circle(Shape):
     """Cat class that inherits from Animal."""
 
-    def __init__(self, radius):
+    def __init__(self, radius=0):
         """Cat class that inherits from Animal."""
         self.radius = radius
 
@@ -37,7 +37,7 @@ class Circle(Shape):
 class Rectangle(Shape):
     """Cat class that inherits from Animal."""
 
-    def __init__(self, width, height):
+    def __init__(self, width=0, height=0):
         """Cat class that inherits from Animal."""
 
         self.width = width
