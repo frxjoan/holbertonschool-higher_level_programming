@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Cat class that inherits from Animal."""
 from abc import ABC, abstractmethod
-from math import pi
+import math
 
 
 class Shape(ABC):
@@ -10,12 +10,12 @@ class Shape(ABC):
     @abstractmethod
     def area(self):
         """Cat class that inherits from Animal."""
-        raise NotImplementedError
+        pass
 
     @abstractmethod
     def perimeter(self):
         """Cat class that inherits from Animal."""
-        raise NotImplementedError
+        pass
 
 
 class Circle(Shape):
@@ -23,19 +23,15 @@ class Circle(Shape):
 
     def __init__(self, radius):
         """Cat class that inherits from Animal."""
-        if not isinstance(radius, (int, float)):
-            raise TypeError("radius must be a number")
-        if radius <= 0:
-            raise ValueError("radius must be positive")
         self.radius = radius
 
     def area(self):
         """Cat class that inherits from Animal."""
-        return pi * self.radius * self.radius
+        return math.pi * self.radius * self.radius
 
     def perimeter(self):
         """Cat class that inherits from Animal."""
-        return 2 * pi * self.radius
+        return 2 * math.pi * self.radius
 
 
 class Rectangle(Shape):
