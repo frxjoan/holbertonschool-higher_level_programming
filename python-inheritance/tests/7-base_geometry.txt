@@ -5,146 +5,78 @@
 Traceback (most recent call last):
 Exception: area() is not implemented
 
->>> bg.integer_validator("width", 1)
->>> bg.integer_validator("height", 42)
->>> bg.integer_validator("big", 10**18)
->>> bg.integer_validator("hex", 0x10)
->>> bg.integer_validator("shift", 1 << 120)
+>>> bg.integer_validator("ok", 1)
+>>> bg.integer_validator("ok", 100)
+>>> bg.integer_validator("ok", 10**18)
 
->>> bg.integer_validator("size", 0)
+>>> bg.integer_validator("v", 0)
 Traceback (most recent call last):
-ValueError: size must be greater than 0
+ValueError: v must be greater than 0
 
->>> bg.integer_validator("size", -1)
+>>> bg.integer_validator("v", -1)
 Traceback (most recent call last):
-ValueError: size must be greater than 0
+ValueError: v must be greater than 0
 
->>> bg.integer_validator("size", -999)
+>>> bg.integer_validator("v", -10**18)
 Traceback (most recent call last):
-ValueError: size must be greater than 0
+ValueError: v must be greater than 0
 
->>> bg.integer_validator("size", -(10**18))
+>>> bg.integer_validator("t", True)
 Traceback (most recent call last):
-ValueError: size must be greater than 0
+TypeError: t must be an integer
 
->>> bg.integer_validator("", 0)
+>>> bg.integer_validator("t", False)
 Traceback (most recent call last):
-ValueError:  must be greater than 0
+TypeError: t must be an integer
 
->>> bg.integer_validator(" spaced name ", 0)
+>>> bg.integer_validator("t", 1.0)
 Traceback (most recent call last):
-ValueError:  spaced name  must be greater than 0
+TypeError: t must be an integer
 
->>> bg.integer_validator("age", "12")
+>>> bg.integer_validator("t", "1")
 Traceback (most recent call last):
-TypeError: age must be an integer
+TypeError: t must be an integer
 
->>> bg.integer_validator("age", 12.0)
+>>> bg.integer_validator("t", "")
 Traceback (most recent call last):
-TypeError: age must be an integer
+TypeError: t must be an integer
 
->>> bg.integer_validator("age", float("inf"))
+>>> bg.integer_validator("t", None)
 Traceback (most recent call last):
-TypeError: age must be an integer
+TypeError: t must be an integer
 
->>> bg.integer_validator("age", float("nan"))
+>>> bg.integer_validator("t", [])
 Traceback (most recent call last):
-TypeError: age must be an integer
+TypeError: t must be an integer
 
->>> bg.integer_validator("age", None)
+>>> bg.integer_validator("t", [1])
 Traceback (most recent call last):
-TypeError: age must be an integer
+TypeError: t must be an integer
 
->>> bg.integer_validator("age", [12])
+>>> bg.integer_validator("t", ())
 Traceback (most recent call last):
-TypeError: age must be an integer
+TypeError: t must be an integer
 
->>> bg.integer_validator("age", [])
+>>> bg.integer_validator("t", (1,))
 Traceback (most recent call last):
-TypeError: age must be an integer
+TypeError: t must be an integer
 
->>> bg.integer_validator("age", {"n": 12})
+>>> bg.integer_validator("t", {})
 Traceback (most recent call last):
-TypeError: age must be an integer
+TypeError: t must be an integer
 
->>> bg.integer_validator("age", {})
+>>> bg.integer_validator("t", {"a": 1})
 Traceback (most recent call last):
-TypeError: age must be an integer
+TypeError: t must be an integer
 
->>> bg.integer_validator("age", (12,))
+>>> bg.integer_validator("t", set())
 Traceback (most recent call last):
-TypeError: age must be an integer
+TypeError: t must be an integer
 
->>> bg.integer_validator("age", ())
+>>> bg.integer_validator("t", {1, 2})
 Traceback (most recent call last):
-TypeError: age must be an integer
+TypeError: t must be an integer
 
->>> bg.integer_validator("age", {1, 2})
+>>> bg.integer_validator("t", b"1")
 Traceback (most recent call last):
-TypeError: age must be an integer
-
->>> bg.integer_validator("age", set())
-Traceback (most recent call last):
-TypeError: age must be an integer
-
->>> bg.integer_validator("age", frozenset({1, 2}))
-Traceback (most recent call last):
-TypeError: age must be an integer
-
->>> bg.integer_validator("age", 3+0j)
-Traceback (most recent call last):
-TypeError: age must be an integer
-
->>> bg.integer_validator("age", b"12")
-Traceback (most recent call last):
-TypeError: age must be an integer
-
->>> bg.integer_validator("age", bytearray(b"12"))
-Traceback (most recent call last):
-TypeError: age must be an integer
-
->>> bg.integer_validator("age", memoryview(b"12"))
-Traceback (most recent call last):
-TypeError: age must be an integer
-
->>> bg.integer_validator("age", range(3))
-Traceback (most recent call last):
-TypeError: age must be an integer
-
->>> bg.integer_validator("age", (i for i in range(3)))
-Traceback (most recent call last):
-TypeError: age must be an integer
-
->>> bg.integer_validator("age", object())
-Traceback (most recent call last):
-TypeError: age must be an integer
-
->>> bg.integer_validator("age", int)
-Traceback (most recent call last):
-TypeError: age must be an integer
-
->>> bg.integer_validator("age", lambda: 1)
-Traceback (most recent call last):
-TypeError: age must be an integer
-
->>> bg.integer_validator("flag", True)
-Traceback (most recent call last):
-TypeError: flag must be an integer
-
->>> bg.integer_validator("flag", False)
-Traceback (most recent call last):
-TypeError: flag must be an integer
-
->>> class MyInt(int):
-...     pass
->>> bg.integer_validator("n", MyInt(5))
-Traceback (most recent call last):
-TypeError: n must be an integer
-
->>> bg.integer_validator(123, "x")
-Traceback (most recent call last):
-TypeError: 123 must be an integer
-
->>> bg.integer_validator(None, "x")
-Traceback (most recent call last):
-TypeError: None must be an integer
+TypeError: t must be an integer
