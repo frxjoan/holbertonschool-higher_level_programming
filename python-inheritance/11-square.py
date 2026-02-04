@@ -12,6 +12,10 @@ class Square(Rectangle):
         self.__size = size
         super().__init__(size, size)
 
+    def area(self):
+        """Return the area of the square."""
+        return self.__size * self.__size
+
     def __str__(self):
         '''This function returns a list'''
         return "[Sqaure] {}".format(self.__size)
