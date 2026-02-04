@@ -9,8 +9,8 @@ class Square(Rectangle):
     def __init__(self, size):
         '''This function returns a list'''
         self.integer_validator("size", size)
-        super().__init__(size, size)
         self.__size = size
+        super().__init__(size, size)
 
     def __str__(self):
         '''This function returns a list'''
