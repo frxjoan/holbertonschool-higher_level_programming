@@ -1,16 +1,14 @@
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry()
 
-# area() must raise Exception
 >>> bg.area()
 Traceback (most recent call last):
 Exception: area() is not implemented
 
-# integer_validator valid cases
 >>> bg.integer_validator("width", 1)
 >>> bg.integer_validator("height", 42)
+>>> bg.integer_validator("big", 10**18)
 
-# integer_validator value errors (<= 0)
 >>> bg.integer_validator("size", 0)
 Traceback (most recent call last):
 ValueError: size must be greater than 0
@@ -23,7 +21,6 @@ ValueError: size must be greater than 0
 Traceback (most recent call last):
 ValueError: size must be greater than 0
 
-# integer_validator type errors (not int)
 >>> bg.integer_validator("age", "12")
 Traceback (most recent call last):
 TypeError: age must be an integer
@@ -44,7 +41,6 @@ TypeError: age must be an integer
 Traceback (most recent call last):
 TypeError: age must be an integer
 
-# bool must be rejected (bool is a subclass of int, but type(True) is bool)
 >>> bg.integer_validator("flag", True)
 Traceback (most recent call last):
 TypeError: flag must be an integer
@@ -52,3 +48,19 @@ TypeError: flag must be an integer
 >>> bg.integer_validator("flag", False)
 Traceback (most recent call last):
 TypeError: flag must be an integer
+
+>>> bg.integer_validator("n", (1,))
+Traceback (most recent call last):
+TypeError: n must be an integer
+
+>>> bg.integer_validator("n", {1, 2})
+Traceback (most recent call last):
+TypeError: n must be an integer
+
+>>> bg.integer_validator("n", 3+0j)
+Traceback (most recent call last):
+TypeError: n must be an integer
+
+>>> bg.integer_validator("n", b"12")
+Traceback (most recent call last):
+TypeError: n must be an integer
