@@ -23,7 +23,7 @@ class Circle(Shape):
 
     def __init__(self, radius=0):
         """Cat class that inherits from Animal."""
-        self.radius = radius
+        self.radius = abs(radius)
 
     def area(self):
         """Cat class that inherits from Animal."""
