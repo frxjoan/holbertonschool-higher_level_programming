@@ -1,7 +1,7 @@
 #!/usr/bin/python3
+"""Cat class that inherits from Animal."""
 from abc import ABC, abstractmethod
 from math import pi
-"""Cat class that inherits from Animal."""
 
 
 class Shape(ABC):
@@ -10,12 +10,12 @@ class Shape(ABC):
     @abstractmethod
     def area(self):
         """Cat class that inherits from Animal."""
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def perimeter(self):
         """Cat class that inherits from Animal."""
-        pass
+        raise NotImplementedError
 
 
 class Circle(Shape):
