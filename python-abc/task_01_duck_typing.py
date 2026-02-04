@@ -23,6 +23,10 @@ class Circle(Shape):
 
     def __init__(self, radius):
         """Cat class that inherits from Animal."""
+        if not isinstance(radius, (int, float)):
+            raise TypeError("radius must be a number")
+        if radius <= 0:
+            raise ValueError("radius must be positive")
         self.radius = radius
 
     def area(self):
