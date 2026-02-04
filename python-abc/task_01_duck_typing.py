@@ -21,13 +21,13 @@ class Shape(ABC):
 class Circle(Shape):
     """Cat class that inherits from Animal."""
 
-    def __init__(self, radius=0):
+    def __init__(self, radius):
         """Cat class that inherits from Animal."""
         self.radius = radius
 
     def area(self):
         """Cat class that inherits from Animal."""
-        return math.pi * self.radius * self.radius
+        return math.pi * (self.radius ** 2)
 
     def perimeter(self):
         """Cat class that inherits from Animal."""
@@ -37,7 +37,7 @@ class Circle(Shape):
 class Rectangle(Shape):
     """Cat class that inherits from Animal."""
 
-    def __init__(self, width=0, height=0):
+    def __init__(self, width, height):
         """Cat class that inherits from Animal."""
 
         self.width = width
@@ -54,5 +54,5 @@ class Rectangle(Shape):
 
 def shape_info(shape):
     """Cat class that inherits from Animal."""
-    print("Area:", obj.area())
-    print("Perimeter:", obj.perimeter())
+    print("Area:", shape.area())
+    print("Perimeter:", shape.perimeter())
