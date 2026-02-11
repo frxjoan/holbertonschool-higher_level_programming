@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+"""Module for JSON deserialization."""
 import json
-'''json file'''
 
 
 def from_json_string(my_str):
-    '''json to string'''
+    """Return the Python object represented by a JSON string."""
     return json.loads(my_str)
