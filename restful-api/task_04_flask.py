@@ -4,17 +4,21 @@ app = Flask(__name__)
 
 users = {}
 
+
 @app.route("/", methods=["GET"])
 def home():
     return "Welcome to the Flask API!"
+
 
 @app.route("/status", methods=["GET"])
 def status():
     return "OK"
 
+
 @app.route("/data", methods=["GET"])
 def data():
     return jsonify(list(users.keys()))
+
 
 @app.route("/users/<username>", methods=["GET"])
 def get_user(username):
@@ -22,6 +26,7 @@ def get_user(username):
     if user is None:
         return jsonify({"error": "User not found"}), 404
     return jsonify(user)
+
 
 @app.route("/add_user", methods=["GET"])
 def add_user():
@@ -49,6 +54,7 @@ def add_user():
     users[username] = user
 
     return jsonify({"message": "User added", "user": user}), 201
+
 
 if __name__ == "__main__":
     app.run()

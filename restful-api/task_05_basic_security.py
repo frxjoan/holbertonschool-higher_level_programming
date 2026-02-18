@@ -30,6 +30,7 @@ users = {
     },
 }
 
+
 @auth.verify_password
 def verify_password(username, password):
     user = users.get(username)
@@ -49,6 +50,7 @@ def basic_auth_error():
 @auth.login_required
 def basic_protected():
     return "Basic Auth: Access Granted"
+
 
 @jwt.unauthorized_loader
 def handle_unauthorized_error(err):
@@ -73,6 +75,7 @@ def handle_revoked_token_error(jwt_header, jwt_payload):
 @jwt.needs_fresh_token_loader
 def handle_needs_fresh_token_error(jwt_header, jwt_payload):
     return jsonify({"error": "Fresh token required"}), 401
+
 
 @app.route("/login", methods=["POST"])
 def login():

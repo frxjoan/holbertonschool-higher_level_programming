@@ -2,6 +2,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
+
 class SimpleAPIHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/":
@@ -31,7 +32,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
 
         elif self.path == "/info":
             data = {
-                "version": "1.0", 
+                "version": "1.0",
                 "description": "A simple API built with http.server"
             }
 
@@ -46,6 +47,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write(b"Endpoint not found")
+
 
 def run(server_class=HTTPServer, handler_class=SimpleAPIHandler):
     server_address = ("", 8000)
