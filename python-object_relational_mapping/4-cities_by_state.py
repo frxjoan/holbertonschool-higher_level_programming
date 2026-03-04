@@ -1,30 +1,35 @@
 #!/usr/bin/python3
-'''
-Lists all cities from the database hbtn_0e_4_usa where the state name matches
-'''
+"""List all cities from the database, ordered by cities.id ascending."""
+
 import MySQLdb
 import sys
 
-if __name__ == "__main__":
+
+def main():
+    """Connect to MySQL and print all rows from the cities table."""
 
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
 
-    conn = MySQLdb.connect(
+    db = MySQLdb.connect(
         host="localhost",
         port=3306,
         user=username,
         passwd=password,
-        db=database
+        db=database,
+        charset="utf8"
     )
 
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM cities ORDER BY cities.id ASC")
-    rows = cursor.fetchall()
+    cur = db.cursor()
+    cur.execute("SELECT * FROM cities ORDER BY cities.id ASC")
 
-    for row in rows:
+    for row in cur.fetchall():
         print(row)
 
-    cursor.close()
-    conn.close()
+    cur.close()
+    db.close()
+
+
+if __name__ == "__main__":
+    main()
