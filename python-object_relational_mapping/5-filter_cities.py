@@ -1,33 +1,42 @@
 #!/usr/bin/python3
-'''
-This script connects to a MySQL database and retrieves all cities from the 'cities' table
-where the state name matches the provided argument.
-The database credentials and state name are provided as command-line arguments.
-'''
+"""List all cities of a given state from the database."""
+
 import MySQLdb
 import sys
 
-if __name__ == "__main__":
 
+def main():
+    """Connect to MySQL and print all cities of the given state."""
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
     state_name = sys.argv[4]
 
-    conn = MySQLdb.connect(
+    db = MySQLdb.connect(
         host="localhost",
         port=3306,
         user=username,
         passwd=password,
-        db=database
+        db=database,
+        charset="utf8"
     )
 
-    cursor = conn.cursor()
-    cursor.execute("SELECT cities.name FROM cities JOIN states ON cities.state_id = states.id WHERE states.name = %s ORDER BY cities.id ASC", (state_name,))
-    rows = cursor.fetchall()
+    cur = db.cursor()
+    cur.execute(
+        "SELECT cities.name "
+        "FROM cities "
+        "INNER JOIN states ON cities.state_id = states.id "
+        "WHERE states.name = %s "
+        "ORDER BY cities.id ASC",
+        (state_name,)
+    )
 
-    for row in rows:
-        print(row)
+    rows = cur.fetchall()
+    print(", ".join([row[0] for row in rows]))
 
-    cursor.close()
-    conn.close()
+    cur.close()
+    db.close()
+
+
+if __name__ == "__main__":
+    main()
