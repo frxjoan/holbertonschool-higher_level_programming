@@ -23,7 +23,7 @@ def main():
     cursor = conn.cursor()
     cursor.execute(
         "SELECT * FROM states "
-        "WHERE name LIKE 'N%' "
+        "WHERE states.name LIKE 'N%' "
         "ORDER BY states.id ASC"
     )
 
