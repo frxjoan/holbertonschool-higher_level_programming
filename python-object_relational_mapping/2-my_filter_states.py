@@ -22,11 +22,12 @@ def main():
     )
 
     cur = db.cursor()
-    cur.execute(
+    query = (
         "SELECT * FROM states "
-        "WHERE name = %s "
-        "ORDER BY states.id ASC", (state_name,)
-    )
+        "WHERE name = '{}' "
+        "ORDER BY states.id ASC"
+    ).format(state_name)
+    cur.execute(query)
 
     for row in cur.fetchall():
         print(row)
