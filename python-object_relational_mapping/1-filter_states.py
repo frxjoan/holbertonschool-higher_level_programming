@@ -12,26 +12,27 @@ def main():
     password = sys.argv[2]
     database = sys.argv[3]
 
-    conn = MySQLdb.connect(
+    db = MySQLdb.connect(
         host="localhost",
         port=3306,
         user=username,
         passwd=password,
-        db=database
+        db=database,
+        charset="utf8"
     )
 
-    cursor = conn.cursor()
-    cursor.execute(
+    cur = db.cursor()
+    cur.execute(
         "SELECT * FROM states "
         "WHERE states.name LIKE 'N%' "
         "ORDER BY states.id ASC"
     )
 
-    for row in cursor.fetchall():
+    for row in cur.fetchall():
         print(row)
 
-    cursor.close()
-    conn.close()
+    cur.close()
+    db.close()
 
 
 if __name__ == "__main__":
