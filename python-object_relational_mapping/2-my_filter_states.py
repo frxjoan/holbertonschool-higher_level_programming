@@ -1,34 +1,39 @@
 #!/usr/bin/python3
-'''
-This script connects to a MySQL database
-and retrieves all states from the 'states' table
-where the name matches the provided argument
-The database credentials and state name are provided as command-line arguments.
-'''
+"""List all states from the database with names starting with 'N'."""
 import MySQLdb
 import sys
 
-if __name__ == "__main__":
+
+def main():
+    """Connect to MySQL and print states with names starting with 'N'."""
 
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
     state_name = sys.argv[4]
 
-    conn = MySQLdb.connect(
+    db = MySQLdb.connect(
         host="localhost",
         port=3306,
         user=username,
         passwd=password,
-        db=database
+        db=database,
+        charset="utf8"
     )
 
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM states WHERE name = %s ORDER BY states.id ASC", (state_name,))
-    rows = cursor.fetchall()
+    cur = db.cursor()
+    cur.execute(
+        "SELECT * FROM states "
+        "WHERE name = %s "
+        "ORDER BY states.id ASC", (state_name,)
+    )
 
-    for row in rows:
+    for row in cur.fetchall():
         print(row)
 
-    cursor.close()
-    conn.close()
+    cur.close()
+    db.close()
+
+
+if __name__ == "__main__":
+    main()
