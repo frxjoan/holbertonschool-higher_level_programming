@@ -1,21 +1,16 @@
 #!/usr/bin/python3
-"""Fetch all State objects from the database and print their id and name."""
+"""Lists all State objects from the database."""
 
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from model_state import State
+from model_state import Base, State
 
 
-def main():
-    """Connect to the database and display all State objects."""
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-
+if __name__ == "__main__":
     engine = create_engine(
-        "mysql+mysqldb://{}:{}@localhost/{}".format(
-            username, password, database
+        "mysql+mysqldb://{}:{}@localhost:3306/{}".format(
+            sys.argv[1], sys.argv[2], sys.argv[3]
         ),
         pool_pre_ping=True
     )
@@ -27,7 +22,3 @@ def main():
         print("{}: {}".format(state.id, state.name))
 
     session.close()
-
-
-if __name__ == "__main__":
-    main()
